@@ -1,5 +1,4 @@
 package org.smy.pma.controller;
-import org.dom4j.rule.Mode;
 import org.smy.pma.dao.EmployeeRepository;
 import org.smy.pma.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class EmployeeController {
     public String displayEmployeeForm(Model model) {
         Employee aEmployee = new Employee();
         model.addAttribute("employee",aEmployee);
-        return "new-employee";
+        return "employees/new-employee";
     }
 
     @PostMapping("/save")
