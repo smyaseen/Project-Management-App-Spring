@@ -26,7 +26,7 @@ public class HomeController {
         List<Employee> employees = employeeRepository.findAll();
         model.addAttribute("projectsList",projects);
         model.addAttribute("employeesList",employees);
-        return "home";
+        return "main/home";
     }
 
 }
