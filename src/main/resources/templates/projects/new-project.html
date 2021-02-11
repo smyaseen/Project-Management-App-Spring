@@ -7,7 +7,7 @@
 
 
 <div class="container">
-    <form action="/project/save" method="post" th:object="${project}">
+    <form action="/projects/save" method="post" th:object="${project}">
         <input type="text" placeholder="Project name" th:field="${project.name}">
 
         <select th:field="${project.stage}">
