@@ -24,7 +24,6 @@ public class EmployeeController {
         return "employees/list-employees";
     }
 
-
     @GetMapping("/new-employee")
     public String displayEmployeeForm(Model model) {
         Employee aEmployee = new Employee();
