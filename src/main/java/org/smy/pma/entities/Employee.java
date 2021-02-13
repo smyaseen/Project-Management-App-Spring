@@ -1,9 +1,6 @@
 package org.smy.pma.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -16,6 +13,10 @@ public class Employee {
     private String lastName;
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+
     public Employee() {
     }
 
@@ -23,6 +24,14 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project theProject) {
+        this.project = theProject;
     }
 
     public long getId() {
