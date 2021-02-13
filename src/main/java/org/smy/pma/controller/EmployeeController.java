@@ -1,6 +1,8 @@
 package org.smy.pma.controller;
 import org.smy.pma.dao.EmployeeRepository;
+import org.smy.pma.dao.ProjectRepository;
 import org.smy.pma.entities.Employee;
+import org.smy.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
