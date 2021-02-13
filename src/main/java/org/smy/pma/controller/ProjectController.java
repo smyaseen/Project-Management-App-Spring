@@ -1,5 +1,6 @@
 package org.smy.pma.controller;
 
+import org.smy.pma.dao.EmployeeRepository;
 import org.smy.pma.dao.ProjectRepository;
 import org.smy.pma.entities.Employee;
 import org.smy.pma.entities.Project;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class ProjectController {
 
     @Autowired
     ProjectRepository projectRepository;
+
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     @GetMapping
     public String displayProjects(Model model) {
@@ -31,13 +36,21 @@ public class ProjectController {
     public String displayProjectForm(Model model) {
         Project aProject = new Project();
         model.addAttribute("project", aProject);
+        List<Employee> employees = employeeRepository.findAll();
+        model.addAttribute("allEmployees",employees);
           return "projects/new-project";
     }
 
     @PostMapping("/save")
-    public String createProject(Project project, Model model) {
+    public String createProject(Project project,@RequestParam List<Long> employees, Model model) {
         //save to database
         projectRepository.save(project);
+        Iterable<Employee> employeeIterable = employeeRepository.findAllById(employees);
+
+        for (Employee e : employeeIterable) {
+            e.setProject(project);
+            employeeRepository.save(e);
+        }
 
         return "redirect:/projects/new-project";
     }
