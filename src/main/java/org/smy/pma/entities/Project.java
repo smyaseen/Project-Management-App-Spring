@@ -1,6 +1,7 @@
 package org.smy.pma.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,6 +27,14 @@ public class Project {
         this.name = name;
         this.stage = stage;
         this.description = description;
+    }
+
+    public void addEmployee(Employee employee) {
+        if (employees == null) {
+            employees = new ArrayList<>();
+        }
+
+        employees.add(employee);
     }
 
     public List<Employee> getEmployees() {
