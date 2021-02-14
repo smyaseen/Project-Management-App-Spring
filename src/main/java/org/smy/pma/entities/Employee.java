@@ -1,21 +1,22 @@
 package org.smy.pma.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long employeeId;
 
     private String firstName;
     private String lastName;
     private String email;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Project project;
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    @JoinTable(name = "project_employee",joinColumns = @JoinColumn(name="employee_id"),inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Project> projects;
 
     public Employee() {
     }
@@ -26,20 +27,20 @@ public class Employee {
         this.email = email;
     }
 
-    public Project getProject() {
-        return project;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public void setProject(Project theProject) {
-        this.project = theProject;
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
-    public long getId() {
-        return id;
+    public long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEmployeeId(long id) {
+        this.employeeId = id;
     }
 
     public String getFirstName() {
