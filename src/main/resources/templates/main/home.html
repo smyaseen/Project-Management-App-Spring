@@ -37,18 +37,17 @@
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
             <tr>
-                <th>Employee Id</th>
-                <th>Employee First Name</th>
-                <th>Employee Last Name</th>
-                <th>Employee Email</th>
+                <th> Employee First Name </th>
+                <th> Employee Last Name </th>
+                <th> Project Count </th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="aEmployee : ${employeesList}">
-                <td th:text="${aEmployee.employeeId}">
-                <td th:text="${aEmployee.firstName}">
-                <td th:text="${aEmployee.lastName}">
-                <td th:text="${aEmployee.email}">
+            <tr th:each="aEmployeeProjectCount : ${employeesProjects}">
+                <!--/*@thymesVar id="firstName" type="java.util.String"*/-->
+                <td th:text="${aEmployeeProjectCount.firstName}">
+                <td th:text="${aEmployeeProjectCount.getLastName}">
+                <td th:text="${aEmployeeProjectCount.projectCount}">
             </tr>
             </tbody>
 
