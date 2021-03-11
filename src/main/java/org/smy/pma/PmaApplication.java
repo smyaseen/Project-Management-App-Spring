@@ -1,17 +1,11 @@
-//manjaro
+//windows
 package org.smy.pma;
 
 import org.smy.pma.dao.EmployeeRepository;
 import org.smy.pma.dao.ProjectRepository;
-import org.smy.pma.entities.Employee;
-import org.smy.pma.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
 
 @SpringBootApplication
 public class PmaApplication {
